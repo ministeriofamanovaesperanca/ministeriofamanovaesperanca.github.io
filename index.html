@@ -1,25 +1,54 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Redirecionando...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <script>
-    setTimeout(function () {
-      window.location.href = "https://www.ministeriofamanvesperanca.com.br";
-    }, 700);
-  </script>
+  <title>Redirecionando…</title>
+
+  <!-- ✅ 1) Redirecionamento por META (funciona até quando JS falha) -->
+  <meta http-equiv="refresh" content="1; url=https://site.eklesiaonline.com.br" />
+
+  <!-- Evita cache “bugado” no in-app -->
+  <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
 
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px;
-    }
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; margin:0; padding:0; background:#fff; color:#111;}
+    .wrap{min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px; text-align:center;}
+    .card{max-width:520px; width:100%; border:1px solid #eaeaea; border-radius:16px; padding:20px;}
+    .btn{display:inline-block; margin-top:14px; padding:12px 16px; border-radius:12px; border:1px solid #111; text-decoration:none; color:#111;}
+    .muted{opacity:.75; font-size:14px;}
   </style>
 </head>
+
 <body>
-  <p>Redirecionando para o site oficial...</p>
+  <div class="wrap">
+    <div class="card">
+      <h2>Estamos te levando para o site…</h2>
+      <p class="muted">Se não abrir automaticamente, toque no botão abaixo.</p>
+
+      <!-- ✅ 2) Link visível: evita a “tela branca” e resolve quando IG bloqueia o auto-redirect -->
+      <a class="btn" href="https://site.eklesiaonline.com.br" rel="noopener">Abrir agora</a>
+
+      <p class="muted" style="margin-top:14px;">Dica: se aparecer “tela branca”, volte e toque em “Abrir agora”.</p>
+    </div>
+  </div>
+
+  <script>
+    // ✅ 3) Redirecionamento por JS (mais rápido e “limpo” no histórico)
+    const target = "https://site.eklesiaonline.com.br";
+    // tenta imediato
+    try { window.location.replace(target); } catch(e) {}
+    // tenta de novo depois de 600ms (Instagram às vezes atrasa scripts)
+    setTimeout(() => { try { window.location.href = target; } catch(e) {} }, 600);
+  </script>
+
+  <noscript>
+    <p style="text-align:center;padding:16px;">
+      JavaScript desativado. Abra: <a href="https://site.eklesiaonline.com.br">https://site.eklesiaonline.com.br</a>
+    </p>
+  </noscript>
 </body>
 </html>
