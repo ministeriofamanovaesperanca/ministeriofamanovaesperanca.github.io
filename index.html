@@ -1,221 +1,198 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ministério Fama | Cultos & Fotos</title>
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ministério Fama - Abrir Site</title>
+  <meta name="theme-color" content="#150701" />
   <style>
     :root{
-      /* 🎨 PALETA MARROM ESCURO */
-      --bg:#0e0906;
-      --card:#1a120c;
-      --text:#f5f1ed;
-      --muted:#c7bfb7;
-      --line:rgba(255,255,255,.12);
-
-      --primary:#3b2415;      /* marrom principal */
-      --primary-light:#5a3a26;
-      --secondary:#8b5e3c;    /* marrom dourado */
-      
-      --shadow:0 22px 60px rgba(0,0,0,.6);
-      --radius:20px;
-      --btn-radius:14px;
-      --max:520px;
-      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      --bg:#0b0504;
+      --card:#140807;
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+      --border:rgba(255,255,255,.10);
+      --btn:#ffffff;
+      --btnText:#150701;
+      --btn2:transparent;
+      --btn2Text:#ffffff;
     }
-
-    *{ box-sizing:border-box; }
-
+    *{box-sizing:border-box}
     body{
       margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 500px at 15% 10%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 85% 90%, rgba(255,255,255,.06), transparent 60%),
+                  var(--bg);
+      color:var(--text);
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:24px 16px;
-      font-family:var(--font);
-      color:var(--text);
-      background:
-        radial-gradient(900px 500px at 10% 10%, rgba(139,94,60,.22), transparent 55%),
-        radial-gradient(800px 500px at 90% 20%, rgba(90,58,38,.18), transparent 55%),
-        radial-gradient(900px 600px at 50% 100%, rgba(255,255,255,.05), transparent 60%),
-        var(--bg);
-    }
-
-    .container{
-      width:100%;
-      max-width:var(--max);
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      margin-bottom:18px;
-      text-align:center;
-    }
-
-    .logo{
-      width:48px;
-      height:48px;
-      border-radius:14px;
-      background:linear-gradient(135deg,var(--secondary),var(--primary));
-      box-shadow:0 14px 34px rgba(139,94,60,.45);
-    }
-
-    .brand h1{
-      margin:0;
-      font-size:18px;
-      line-height:1.1;
-      letter-spacing:.3px;
-    }
-
-    .brand span{
-      display:block;
-      margin-top:3px;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-      border:1px solid var(--line);
-      border-radius:var(--radius);
       padding:20px;
-      box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
     }
-
-    .card h2{
-      margin:0;
-      font-size:20px;
-      letter-spacing:.4px;
+    .card{
+      width:min(520px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:22px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.55);
     }
-
-    .card p{
-      margin:12px 0 0;
-      font-size:14px;
-      line-height:1.55;
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border:1px solid var(--border);
+      border-radius:999px;
       color:var(--muted);
+      font-size:13px;
+      letter-spacing:.2px;
+      background: rgba(0,0,0,.25);
     }
-
-    .actions{
-      margin-top:18px;
+    h1{
+      margin:14px 0 8px;
+      font-size:26px;
+      line-height:1.15;
+    }
+    p{
+      margin:0 0 18px;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:15px;
+    }
+    .btns{
       display:grid;
-      gap:12px;
+      gap:10px;
+      margin-top:8px;
     }
-
     .btn{
-      width:100%;
-      padding:14px;
-      border-radius:var(--btn-radius);
-      border:1px solid var(--line);
-      text-decoration:none;
+      appearance:none;
+      border:0;
+      border-radius:14px;
+      padding:14px 14px;
       font-weight:700;
       font-size:15px;
-      text-align:center;
-      color:var(--text);
-      background:rgba(255,255,255,.05);
-      transition:all .15s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-      background:rgba(255,255,255,.08);
-    }
-
-    .btn-primary{
-      background:linear-gradient(135deg,var(--primary),var(--primary-light));
-      border-color:rgba(139,94,60,.55);
-    }
-
-    .btn-primary:hover{
-      background:linear-gradient(135deg,var(--primary-light),var(--primary));
-    }
-
-    .btn-secondary{
-      background:linear-gradient(135deg,var(--secondary),rgba(139,94,60,.75));
-      border-color:rgba(139,94,60,.55);
-    }
-
-    .social{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns:1fr 1fr;
+      cursor:pointer;
+      text-decoration:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
       gap:10px;
+      user-select:none;
     }
-
-    .note{
+    .btn.primary{
+      background:var(--btn);
+      color:var(--btnText);
+    }
+    .btn.secondary{
+      background:var(--btn2);
+      color:var(--btn2Text);
+      border:1px solid var(--border);
+    }
+    .hint{
       margin-top:14px;
       padding-top:14px;
-      border-top:1px solid var(--line);
+      border-top:1px solid var(--border);
+      color:rgba(255,255,255,.62);
       font-size:12.5px;
-      line-height:1.55;
-      color:var(--muted);
+      line-height:1.45;
     }
-
-    .footer{
-      margin-top:16px;
-      text-align:center;
-      font-size:11.5px;
-      color:rgba(255,255,255,.45);
+    .small{
+      font-size:12.5px;
+      color:rgba(255,255,255,.62);
+      margin-top:10px;
+    }
+    .url{
+      word-break:break-all;
+      color:rgba(255,255,255,.85);
     }
   </style>
 </head>
 
 <body>
-  <main class="container">
+  <main class="card">
+    <div class="badge">🔗 Link oficial • Ministério Fama</div>
 
-    <div class="brand">
-      <div class="logo"></div>
-      <div>
-        <h1>Ministério Fama</h1>
-        <span>Jardim Nova Esperança • Goiânia</span>
-      </div>
+    <h1>Abrir o site no navegador externo</h1>
+    <p>
+      Toque no botão abaixo para abrir no <b>Chrome/Safari</b> (fora do Instagram).
+    </p>
+
+    <div class="btns">
+      <button class="btn primary" id="openExternal">🌐 Abrir no navegador externo</button>
+      <a class="btn secondary" id="openNormal" href="#" target="_blank" rel="noopener noreferrer">
+        ➜ Abrir link normal
+      </a>
     </div>
 
-    <section class="card">
-      <h2>📸 Fotos do culto & informações</h2>
-      <p>
-        Para acompanhar as <b>fotos do culto</b>, avisos e conteúdos do nosso ministério,
-        clique no botão abaixo.
-        <br><br>
-        <b>Importante:</b> se estiver no Instagram e algo não carregar,
-        toque nos três pontos (•••) e escolha <b>“Abrir no navegador”</b>.
-      </p>
-
-      <div class="actions">
-        <!-- LINK PRINCIPAL (FOTOS / GALERIA) -->
-        <a class="btn btn-primary" href="https://site.eklesiaonline.com.br/ONg5h5" target="_blank" rel="noopener">
-          Acessar fotos do culto
-        </a>
-
-        <!-- LINK EKLESIA -->
-        <a class="btn btn-secondary" href="https://site.eklesiaonline.com.br/ONg5h5" target="_blank" rel="noopener">
-          Acessar site oficial
-        </a>
-      </div>
-
-      <div class="social">
-        <!-- REDES SOCIAIS -->
-        <a class="btn" href="https://instagram.com/SEU_INSTAGRAM" target="_blank">Instagram</a>
-        <a class="btn" href="https://wa.me/55SEUNUMERO" target="_blank">WhatsApp</a>
-        <a class="btn" href="https://youtube.com/SEU_CANAL" target="_blank">YouTube</a>
-        <a class="btn" href="https://facebook.com/SUA_PAGINA" target="_blank">Facebook</a>
-      </div>
-
-      <div class="note">
-        Esta página foi criada para facilitar o acesso às fotos e conteúdos da igreja,
-        especialmente para quem chega pelo Instagram.
-      </div>
-    </section>
-
-    <div class="footer">
-      © Assembleia de Deus – Ministério Fama
+    <div class="hint">
+      <b>Importante:</b> o Instagram pode tentar abrir links no navegador interno.
+      Se isso acontecer, use o menu “⋯” do Instagram e escolha <b>“Abrir no navegador”</b>.
+      <div class="small">Destino: <span class="url" id="destinoTxt"></span></div>
     </div>
-
   </main>
+
+  <script>
+    const URL_DESTINO = "https://www.ministeriofamanvesperanca.com.br";
+
+    // Link normal (fallback)
+    const normal = document.getElementById("openNormal");
+    normal.href = URL_DESTINO;
+
+    // Mostrar URL na tela
+    document.getElementById("destinoTxt").textContent = URL_DESTINO;
+
+    // Detect simples de plataforma
+    const ua = navigator.userAgent || "";
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
+
+    // Tenta abrir em navegador externo
+    // Android: intent:// abre preferencialmente fora do app
+    // iOS: reforça abertura em nova aba + fallback para window.location
+    function openExternalBrowser() {
+      try {
+        if (isAndroid) {
+          // Converte https://site.com/... para intent://site.com/...#Intent;scheme=https;package=com.android.chrome;end
+          const url = new URL(URL_DESTINO);
+          const intentUrl =
+            "intent://" + url.host + url.pathname + url.search + url.hash +
+            "#Intent;scheme=" + url.protocol.replace(":", "") +
+            ";package=com.android.chrome;end";
+
+          // Tentativa 1: intent do Chrome
+          window.location.href = intentUrl;
+
+          // Fallback rápido caso intent seja bloqueado
+          setTimeout(() => {
+            window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
+          }, 350);
+
+        } else if (isIOS) {
+          // iOS: tenta abrir em nova aba
+          window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
+
+          // Fallback: se o in-app bloquear, redireciona
+          setTimeout(() => {
+            window.location.href = URL_DESTINO;
+          }, 350);
+
+        } else {
+          // Desktop/outros
+          window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
+        }
+      } catch (e) {
+        // Fallback universal
+        window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
+      }
+    }
+
+    document.getElementById("openExternal").addEventListener("click", openExternalBrowser);
+
+    // Extra: se a pessoa clicar no card inteiro (opcional):
+    // document.querySelector(".card").addEventListener("click", openExternalBrowser);
+  </script>
 </body>
 </html>
