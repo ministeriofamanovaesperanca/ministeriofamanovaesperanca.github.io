@@ -4,204 +4,211 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Abrir no navegador</title>
-
-  <!-- Evita cache agressivo do webview (não é garantia; headers no servidor são melhores) -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
-
+  <meta name="theme-color" content="#150701" />
   <style>
     :root{
-      --bg:#0b0b0b;
-      --card:#151515;
-      --text:#f2f2f2;
-      --muted:#bdbdbd;
-      --btn:#ffffff;
-      --btnText:#111;
-      --outline:rgba(255,255,255,.16);
-      --ok:#2ecc71;
-      --warn:#f1c40f;
+      --bg:#0e0b0b;
+      --card:#161010;
+      --text:#ffffff;
+      --muted:#d8c8c8;
+      --accent:#ffffff;
+      --accentText:#150701;
+      --border:rgba(255,255,255,.12);
     }
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(1200px 600px at 20% 0%, rgba(255,255,255,.08), transparent 55%),
-                  radial-gradient(900px 500px at 80% 10%, rgba(255,255,255,.06), transparent 50%),
-                  var(--bg);
-      color:var(--text);
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:22px;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% 10%, #2b1616 0%, var(--bg) 55%);
+      color:var(--text);
+      padding:24px;
     }
+    .wrap{width:min(520px, 100%)}
     .card{
-      width:min(540px, 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--outline);
-      border-radius:18px;
-      padding:20px;
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border:1px solid var(--border);
+      border-radius:22px;
+      padding:22px;
       box-shadow: 0 18px 60px rgba(0,0,0,.55);
     }
-    .brand{
-      display:flex;
-      gap:12px;
+    .badge{
+      display:inline-flex;
       align-items:center;
-      margin-bottom:14px;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.25);
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:12px;
     }
-    .logo{
-      width:42px;height:42px;border-radius:14px;
-      background: rgba(255,255,255,.12);
-      display:grid;place-items:center;
-      border:1px solid var(--outline);
-      font-weight:700;
+    h1{
+      margin:0 0 8px 0;
+      font-size:22px;
+      line-height:1.25;
+      letter-spacing:-0.02em;
     }
-    h1{font-size:20px;margin:0}
-    p{margin:10px 0;color:var(--muted);line-height:1.45}
-    .buttons{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-    a.button, button.button{
-      appearance:none;
-      border:none;
+    p{
+      margin:0 0 18px 0;
+      color:var(--muted);
+      line-height:1.5;
+      font-size:15px;
+    }
+    .btn{
       width:100%;
-      padding:14px 14px;
-      border-radius:14px;
-      text-decoration:none;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      padding:14px 16px;
+      border-radius:16px;
+      border:0;
       cursor:pointer;
       font-weight:700;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
+      font-size:16px;
+      background:var(--accent);
+      color:var(--accentText);
+      transition: transform .08s ease, opacity .2s ease;
     }
-    a.primary{background:var(--btn); color:var(--btnText)}
-    a.secondary, button.secondary{
+    .btn:active{transform:scale(.98)}
+    .btn.secondary{
+      margin-top:10px;
       background:transparent;
+      border:1px solid var(--border);
       color:var(--text);
-      border:1px solid var(--outline);
+      font-weight:600;
     }
-    .note{
+    .hint{
       margin-top:14px;
+      font-size:13px;
+      color:var(--muted);
+      border-top:1px solid var(--border);
+      padding-top:14px;
+    }
+    code{
+      display:block;
+      margin-top:10px;
       padding:12px;
       border-radius:14px;
-      border:1px solid var(--outline);
-      background: rgba(0,0,0,.25);
-      font-size:14px;
-    }
-    .badge{
-      display:inline-block;
-      padding:2px 8px;
-      border-radius:999px;
+      border:1px dashed var(--border);
+      background:rgba(0,0,0,.28);
+      color:#fff;
+      overflow:auto;
       font-size:12px;
-      border:1px solid var(--outline);
-      margin-right:8px;
     }
-    .badge.warn{color:var(--warn)}
-    .badge.ok{color:var(--ok)}
-    .tiny{font-size:12px;color:var(--muted);margin-top:10px}
-    code{color:#fff}
+    .small{
+      margin-top:10px;
+      font-size:12px;
+      color:var(--muted);
+      opacity:.9;
+    }
+    .ok{
+      display:none;
+      margin-top:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(0,0,0,.20);
+      color:#e9dede;
+      font-size:13px;
+    }
   </style>
 </head>
+
 <body>
-  <main class="card">
-    <div class="brand">
-      <div class="logo">MF</div>
-      <div>
-        <h1>Abrir o site no navegador externo</h1>
-        <div class="tiny" id="uaLine"></div>
+  <div class="wrap">
+    <div class="card">
+      <div class="badge">⚠️ Importante</div>
+      <h1>Para abrir corretamente, toque no botão abaixo</h1>
+      <p>
+        O Instagram às vezes bloqueia redirecionamentos automáticos e pode aparecer tela branca.
+        Por isso, o acesso é feito <b>somente após seu clique</b>, abrindo no navegador do celular.
+      </p>
+
+      <button class="btn" id="openBtn" type="button">
+        🔗 Abrir site no navegador
+      </button>
+
+      <button class="btn secondary" id="copyBtn" type="button">
+        📋 Copiar link do site
+      </button>
+
+      <div class="ok" id="okBox">Link copiado! Agora cole no seu navegador (Chrome/Safari).</div>
+
+      <div class="hint">
+        <b>Se ainda abrir no Instagram:</b> toque nos “⋯” no canto superior e escolha
+        <b>“Abrir no navegador”</b> (ou “Open in browser”).
+        <div class="small">Link:</div>
+        <code id="showUrl"></code>
       </div>
     </div>
-
-    <p>
-      Para evitar a tela branca do navegador interno do Instagram, use um dos botões abaixo.
-      <b>Não redirecionamos automaticamente</b> — o clique do usuário é o que funciona melhor.
-    </p>
-
-    <div class="buttons">
-      <!-- Link padrão (pode abrir interno no Instagram; ainda assim é útil fora do app) -->
-      <a class="button primary" id="btnNormal" href="#" target="_blank" rel="noopener noreferrer">
-        Abrir agora
-      </a>
-
-      <!-- Android (tenta “forçar” navegador externo via intent:// -> Chrome) -->
-      <a class="button secondary" id="btnAndroid" href="#">
-        Abrir no Chrome (Android)
-      </a>
-
-      <!-- Copiar -->
-      <button class="button secondary" id="btnCopy" type="button">
-        Copiar link
-      </button>
-    </div>
-
-    <div class="note" id="note">
-      <span class="badge warn">Instagram</span>
-      Se ainda abrir dentro do Instagram: toque no menu <b>⋯</b> (ou ícone do navegador) e escolha
-      <b>“Abrir no navegador”</b>.
-      <br><br>
-      <span class="badge ok">Dica</span>
-      Alguns aparelhos têm a opção do Instagram de <b>abrir links em navegador externo</b> nas permissões do app.
-    </div>
-
-    <p class="tiny">
-      Destino: <code id="destinoTxt"></code>
-    </p>
-  </main>
+  </div>
 
   <script>
-    // ✅ TROQUE AQUI
-    const DESTINO = "https://www.ministeriofamanvesperanca.com.br";
+    // ✅ DESTINO FINAL
+    const TARGET_URL = "https://www.ministeriofamanvesperanca.com.br/";
 
-    // Helpers
-    const $ = (id) => document.getElementById(id);
+    // Exibe a URL no card
+    document.getElementById("showUrl").textContent = TARGET_URL;
 
-    // Detecta in-app browsers comuns (Instagram/Facebook)
-    function isInAppBrowser() {
-      const ua = navigator.userAgent || "";
-      return /Instagram|FBAN|FBAV|FB_IAB|FBIOS|FB4A/i.test(ua);
-    }
     function isAndroid() {
       return /Android/i.test(navigator.userAgent || "");
     }
-    function isiPhone() {
-      return /iPhone|iPad|iPod/i.test(navigator.userAgent || "");
-    }
 
-    // Monta intent para Android/Chrome
-    // Ex: intent://www.exemplo.com/#Intent;scheme=https;package=com.android.chrome;end
-    function buildAndroidIntent(url) {
-      try {
-        const u = new URL(url);
-        const hostAndPath = (u.host + u.pathname + u.search + u.hash).replace(/^\/+/, "");
-        return `intent://${hostAndPath}#Intent;scheme=${u.protocol.replace(":", "")};package=com.android.chrome;end`;
-      } catch (e) {
-        return url;
+    function openOutsideInstagram() {
+      // A ação manual (clique) é o que mais ajuda a “sair” do webview.
+      // Android: tenta usar intent para abrir fora do Instagram (Chrome/Default Browser).
+      if (isAndroid()) {
+        try {
+          const noProto = TARGET_URL.replace(/^https?:\/\//i, "");
+          const intentUrl =
+            "intent://" + noProto +
+            "#Intent;scheme=https;package=com.android.chrome;end";
+          // 1) tenta Chrome via intent
+          window.location.href = intentUrl;
+
+          // 2) fallback normal (se intent falhar, muitos aparelhos abrem o seletor de navegador)
+          setTimeout(() => {
+            window.location.href = TARGET_URL;
+          }, 700);
+          return;
+        } catch (e) {
+          // fallback
+          window.location.href = TARGET_URL;
+          return;
+        }
       }
+
+      // iPhone/iPad: não tem intent. O melhor é abrir normal após clique.
+      // Em alguns casos o iOS mostra opções de abrir no Safari.
+      window.location.href = TARGET_URL;
     }
 
-    // Set links
-    $("destinoTxt").textContent = DESTINO;
-
-    const btnNormal = $("btnNormal");
-    btnNormal.href = DESTINO;
-
-    const btnAndroid = $("btnAndroid");
-    btnAndroid.href = buildAndroidIntent(DESTINO);
-
-    // Esconde botão Android se não for Android
-    if (!isAndroid()) btnAndroid.style.display = "none";
-
-    // Mensagens contextuais
-    const uaLine = $("uaLine");
-    if (isInAppBrowser()) {
-      uaLine.textContent = "Detectamos abertura dentro do Instagram/Facebook (webview).";
-    } else {
-      uaLine.textContent = "Você está em um navegador normal.";
-      // Se não estiver no in-app, nem precisa do botão intent
-      if (btnAndroid) btnAndroid.style.display = "none";
-      $("note").innerHTML =
-        `<span class="badge ok">Ok</span> Você já está em um navegador externo. Pode clicar em <b>Abrir agora</b>.`;
+    async function copyLink() {
+      const okBox = document.getElementById("okBox");
+      try {
+        await navigator.clipboard.writeText(TARGET_URL);
+        okBox.style.display = "block";
+      } catch (e) {
+        // fallback antigo
+        const ta = document.createElement("textarea");
+        ta.value = TARGET_URL;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+        okBox.style.display = "block";
+      }
+      setTimeout(() => (okBox.style.display = "none"), 2500);
     }
 
-    // Copiar link
-    $
+    document.getElementById("openBtn").addEventListener("click", openOutsideInstagram);
+    document.getElementById("copyBtn").addEventListener("click", copyLink);
+  </script>
+</body>
+</html>
