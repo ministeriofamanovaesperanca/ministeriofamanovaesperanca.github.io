@@ -3,196 +3,180 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Ministério Fama - Abrir Site</title>
-  <meta name="theme-color" content="#150701" />
+  <title>Abrir site no navegador</title>
+  <meta name="robots" content="noindex,nofollow" />
   <style>
     :root{
-      --bg:#0b0504;
-      --card:#140807;
-      --text:#ffffff;
-      --muted:rgba(255,255,255,.72);
-      --border:rgba(255,255,255,.10);
+      --bg:#0f0f10;
+      --card:#17181a;
+      --text:#f3f3f3;
+      --muted:#b9bcc3;
       --btn:#ffffff;
-      --btnText:#150701;
-      --btn2:transparent;
-      --btn2Text:#ffffff;
+      --btnText:#0f0f10;
+      --outline:rgba(255,255,255,.12);
     }
     *{box-sizing:border-box}
     body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: radial-gradient(900px 500px at 15% 10%, rgba(255,255,255,.08), transparent 60%),
-                  radial-gradient(900px 500px at 85% 90%, rgba(255,255,255,.06), transparent 60%),
+      margin:0; min-height:100svh;
+      display:grid; place-items:center;
+      background: radial-gradient(1200px 600px at 30% 10%, rgba(255,255,255,.08), transparent 60%),
+                  radial-gradient(900px 500px at 70% 80%, rgba(255,255,255,.06), transparent 60%),
                   var(--bg);
       color:var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      padding:24px;
     }
     .card{
       width:min(520px, 100%);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid var(--border);
-      border-radius:18px;
+      border:1px solid var(--outline);
+      border-radius:20px;
       padding:22px;
-      box-shadow: 0 18px 50px rgba(0,0,0,.55);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:8px 12px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      color:var(--muted);
-      font-size:13px;
-      letter-spacing:.2px;
+    h1{font-size:20px; margin:0 0 8px}
+    p{margin:0 0 14px; color:var(--muted); line-height:1.45}
+    .url{
+      word-break:break-all;
+      padding:10px 12px;
+      border:1px dashed var(--outline);
+      border-radius:12px;
       background: rgba(0,0,0,.25);
+      color: var(--text);
+      font-size:13px;
+      margin:12px 0 16px;
     }
-    h1{
-      margin:14px 0 8px;
-      font-size:26px;
-      line-height:1.15;
-    }
-    p{
-      margin:0 0 18px;
-      color:var(--muted);
-      line-height:1.5;
-      font-size:15px;
-    }
-    .btns{
-      display:grid;
-      gap:10px;
-      margin-top:8px;
-    }
-    .btn{
-      appearance:none;
-      border:0;
+    .btns{display:grid; gap:10px; margin-top:10px}
+    button, a.btn{
+      appearance:none; border:0; cursor:pointer;
+      padding:12px 14px;
       border-radius:14px;
-      padding:14px 14px;
       font-weight:700;
       font-size:15px;
-      cursor:pointer;
       text-decoration:none;
-      display:flex;
-      justify-content:center;
-      align-items:center;
+      display:flex; align-items:center; justify-content:center;
       gap:10px;
+      transition: transform .08s ease, opacity .2s ease;
       user-select:none;
     }
-    .btn.primary{
-      background:var(--btn);
-      color:var(--btnText);
-    }
-    .btn.secondary{
-      background:var(--btn2);
-      color:var(--btn2Text);
-      border:1px solid var(--border);
+    button:active, a.btn:active{transform: scale(.99)}
+    .primary{background:var(--btn); color:var(--btnText)}
+    .secondary{
+      background: transparent;
+      color: var(--text);
+      border:1px solid var(--outline);
     }
     .hint{
       margin-top:14px;
-      padding-top:14px;
-      border-top:1px solid var(--border);
-      color:rgba(255,255,255,.62);
-      font-size:12.5px;
-      line-height:1.45;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--outline);
+      background: rgba(0,0,0,.18);
+      color: var(--muted);
+      font-size:13px;
     }
-    .small{
-      font-size:12.5px;
-      color:rgba(255,255,255,.62);
-      margin-top:10px;
+    .ok{
+      color:#b6ffcf;
+      font-weight:700;
     }
-    .url{
-      word-break:break-all;
-      color:rgba(255,255,255,.85);
-    }
+    .small{font-size:12px; opacity:.95}
   </style>
 </head>
-
 <body>
   <main class="card">
-    <div class="badge">🔗 Link oficial • Ministério Fama</div>
+    <h1>Abrir no navegador externo</h1>
+    <p>O Instagram às vezes bloqueia redirecionamentos dentro do app. Para evitar tela branca, toque no botão abaixo.</p>
 
-    <h1>Abrir o site no navegador externo</h1>
-    <p>
-      Toque no botão abaixo para abrir no <b>Chrome/Safari</b> (fora do Instagram).
-    </p>
+    <div class="url" id="urlBox">https://www.ministeriofamanvesperanca.com.br</div>
 
     <div class="btns">
-      <button class="btn primary" id="openExternal">🌐 Abrir no navegador externo</button>
-      <a class="btn secondary" id="openNormal" href="#" target="_blank" rel="noopener noreferrer">
-        ➜ Abrir link normal
+      <button class="primary" id="openBtn">🔗 Abrir site agora</button>
+      <button class="secondary" id="copyBtn">📋 Copiar link</button>
+      <a class="btn secondary" id="plainLink" href="https://www.ministeriofamanvesperanca.com.br" target="_blank" rel="noopener noreferrer">
+        🌐 Abrir (link normal)
       </a>
     </div>
 
-    <div class="hint">
-      <b>Importante:</b> o Instagram pode tentar abrir links no navegador interno.
-      Se isso acontecer, use o menu “⋯” do Instagram e escolha <b>“Abrir no navegador”</b>.
-      <div class="small">Destino: <span class="url" id="destinoTxt"></span></div>
-    </div>
+    <div class="hint" id="hintBox" style="display:none"></div>
+
+    <p class="small" style="margin-top:14px">
+      Dica: se aparecer tela branca, toque em <b>⋯</b> (canto superior) e escolha <b>“Abrir no navegador”</b>.
+    </p>
   </main>
 
   <script>
-    const URL_DESTINO = "https://www.ministeriofamanvesperanca.com.br";
+    const TARGET = "https://www.ministeriofamanvesperanca.com.br";
 
-    // Link normal (fallback)
-    const normal = document.getElementById("openNormal");
-    normal.href = URL_DESTINO;
+    function isInAppBrowser() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      // Instagram / Facebook in-app (inclui variações)
+      return /Instagram|FBAN|FBAV|FB_IAB|FBIOS|FB4A|Messenger/i.test(ua);
+    }
 
-    // Mostrar URL na tela
-    document.getElementById("destinoTxt").textContent = URL_DESTINO;
-
-    // Detect simples de plataforma
-    const ua = navigator.userAgent || "";
-    const isAndroid = /Android/i.test(ua);
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
-
-    // Tenta abrir em navegador externo
-    // Android: intent:// abre preferencialmente fora do app
-    // iOS: reforça abertura em nova aba + fallback para window.location
-    function openExternalBrowser() {
+    function androidIntentUrl(url) {
+      // Converte https://dominio/path para intent://dominio/path#Intent;scheme=https;package=com.android.chrome;end
+      // Isso costuma forçar abertura fora do in-app (quando permitido)
       try {
-        if (isAndroid) {
-          // Converte https://site.com/... para intent://site.com/...#Intent;scheme=https;package=com.android.chrome;end
-          const url = new URL(URL_DESTINO);
-          const intentUrl =
-            "intent://" + url.host + url.pathname + url.search + url.hash +
-            "#Intent;scheme=" + url.protocol.replace(":", "") +
-            ";package=com.android.chrome;end";
-
-          // Tentativa 1: intent do Chrome
-          window.location.href = intentUrl;
-
-          // Fallback rápido caso intent seja bloqueado
-          setTimeout(() => {
-            window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
-          }, 350);
-
-        } else if (isIOS) {
-          // iOS: tenta abrir em nova aba
-          window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
-
-          // Fallback: se o in-app bloquear, redireciona
-          setTimeout(() => {
-            window.location.href = URL_DESTINO;
-          }, 350);
-
-        } else {
-          // Desktop/outros
-          window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
-        }
+        const u = new URL(url);
+        const path = (u.pathname || "/") + (u.search || "") + (u.hash || "");
+        return `intent://${u.host}${path}#Intent;scheme=${u.protocol.replace(":","")};package=com.android.chrome;end`;
       } catch (e) {
-        // Fallback universal
-        window.open(URL_DESTINO, "_blank", "noopener,noreferrer");
+        return url;
       }
     }
 
-    document.getElementById("openExternal").addEventListener("click", openExternalBrowser);
+    function openExternal() {
+      const ua = navigator.userAgent || "";
+      const isiOS = /iPhone|iPad|iPod/i.test(ua);
+      const isAndroid = /Android/i.test(ua);
 
-    // Extra: se a pessoa clicar no card inteiro (opcional):
-    // document.querySelector(".card").addEventListener("click", openExternalBrowser);
-  </script>
-</body>
-</html>
+      // 1) Tentativa com clique do usuário (melhor chance)
+      // Tenta abrir em nova aba/janela
+      const w = window.open(TARGET, "_blank", "noopener,noreferrer");
+
+      // 2) Se estiver no Instagram/Facebook e for Android, tenta intent:// (frequentemente ajuda)
+      if (isInAppBrowser() && isAndroid) {
+        setTimeout(() => {
+          window.location.href = androidIntentUrl(TARGET);
+        }, 150);
+      }
+
+      // 3) Fallback: navega direto (pode continuar no in-app, mas pelo menos abre)
+      setTimeout(() => {
+        if (!w) window.location.href = TARGET;
+      }, 450);
+
+      // Mensagem de ajuda
+      const hint = document.getElementById("hintBox");
+      if (isInAppBrowser()) {
+        hint.style.display = "block";
+        hint.innerHTML =
+          `Se não abrir fora do Instagram, use: <br><b>⋯</b> → <b>Abrir no navegador</b>.<br>` +
+          (isiOS ? `No iPhone, às vezes é necessário escolher <b>Abrir no Safari</b>.` : `No Android, escolha <b>Abrir no Chrome</b>.`);
+      }
+    }
+
+    async function copyLink() {
+      try {
+        await navigator.clipboard.writeText(TARGET);
+        const hint = document.getElementById("hintBox");
+        hint.style.display = "block";
+        hint.innerHTML = `<span class="ok">Link copiado!</span> Agora cole no Chrome/Safari para abrir fora do Instagram.`;
+      } catch (e) {
+        // fallback antigo
+        const temp = document.createElement("textarea");
+        temp.value = TARGET;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand("copy");
+        document.body.removeChild(temp);
+        const hint = document.getElementById("hintBox");
+        hint.style.display = "block";
+        hint.innerHTML = `<span class="ok">Link copiado!</span> Cole no navegador para abrir externamente.`;
+      }
+    }
+
+    document.getElementById("openBtn").addEventListener("click", openExternal);
+    document.getElementById("copyBtn").addEventListener("click", copyLink);
+
+    // Não redireciona automaticamente (isso costuma causar a “tela branca”
